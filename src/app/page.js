@@ -1,4 +1,5 @@
-import Herocta from "@/components/cta/herocta";
+
+import Herocta from "@/components/cta/Herocta";
 import DoctorSlider from "@/components/doctor/DoctorSlider";
 import Navbar from "@/components/navbar/Navbar";
 import HospitalServices from "@/components/services/HospitalServices";
