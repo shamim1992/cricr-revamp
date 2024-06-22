@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from 'daisyui'
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -6,13 +7,24 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+    colors: {
+     'activeColor':'#2f2f8d',
+     'secondary':'#05aaf2',
+     'white':'#FFFFFF',
+     'hoverColor': '#1e40af',
+     'black':'#000'
     },
   },
-  plugins: [],
+
+  // theme: {
+  //   extend: {
+  //     backgroundImage: {
+  //       "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+  //       "gradient-conic":
+  //         "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+  //     },
+  //   },
+  // },
+  plugins: [daisyui],
+  // plugins: [],
 };
