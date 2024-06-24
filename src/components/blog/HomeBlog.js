@@ -10,7 +10,7 @@ const blogPosts = [
       title: "The Future of AI in Healthcare",
       excerpt: "Exploring how artificial intelligence is revolutionizing medical diagnoses and treatment plans.",
       imageUrl: "https://picsum.photos/seed/health1/800/600",
-      author: "Dr. Jane Smith",
+      author: "Admin",
       date: "May 15, 2024",
     },
     {
@@ -18,7 +18,7 @@ const blogPosts = [
       title: "5 Tips for a Healthy Heart",
       excerpt: "Simple lifestyle changes that can significantly improve your cardiovascular health.",
       imageUrl: "https://picsum.photos/seed/health2/800/600",
-      author: "John Doe",
+      author: "Admin",
       date: "May 10, 2024",
     },
     {
@@ -26,7 +26,7 @@ const blogPosts = [
       title: "Understanding Telemedicine",
       excerpt: "How virtual consultations are changing the landscape of patient care.",
       imageUrl: "https://picsum.photos/seed/health3/800/600",
-      author: "Sarah Johnson",
+      author: "Admin",
       date: "May 5, 2024",
     },
     {
@@ -34,7 +34,7 @@ const blogPosts = [
       title: "Nutrition Myths Debunked",
       excerpt: "Separating fact from fiction in the world of diet and nutrition.",
       imageUrl: "https://picsum.photos/seed/health4/800/600",
-      author: "Mike Brown",
+      author: "Admin",
       date: "April 30, 2024",
     },
     {
@@ -42,7 +42,7 @@ const blogPosts = [
       title: "The Importance of Mental Health",
       excerpt: "Why taking care of your mental wellbeing is crucial for overall health.",
       imageUrl: "https://picsum.photos/seed/health5/800/600",
-      author: "Dr. Emily Chen",
+      author: "Admin",
       date: "April 25, 2024",
     },
   ];
