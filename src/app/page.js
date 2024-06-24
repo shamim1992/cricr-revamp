@@ -1,5 +1,6 @@
 
 import HomeBlog from "@/components/blog/HomeBlog";
+import ProductSection from "@/components/books/ProducctSection";
 import Herocta from "@/components/cta/Herocta";
 import DoctorSlider from "@/components/doctor/DoctorSlider";
 import FooterSection from "@/components/footer/FooterSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <DoctorSlider/>
       <HospitalServices/>
       <HomeBlog/>
+      {/* <ProductSection/> */}
       <FooterSection/>
       
     </main>

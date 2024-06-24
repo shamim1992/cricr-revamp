@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import logo from '../../../public/assets/img/chanrelogo.png'
+import Image from 'next/image';
+
 
 const FooterSection = () => {
   const [email, setEmail] = useState('');
@@ -33,8 +36,8 @@ const FooterSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">Company Name</h3>
-            <p className="mb-4">Providing innovative solutions since 2023</p>
+            <h3 className="text-2xl font-bold mb-4"><Image src={logo} alt="logo" className="h-auto w-auto"/></h3>
+            <div className="mb-4">ChanRe Rheumatology & Immunology Center & Research is a unique one of its kind hospital in India dedicated for management of patients.</div>
             <div className="flex space-x-4">
               {socialIcons.map(({ Icon, href, color }, index) => (
                 <motion.a
@@ -54,7 +57,7 @@ const FooterSection = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {['About Us', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
+              {['About Us', 'Services', 'Gallery', 'Contact'].map((item, index) => (
                 <li key={index}>
                   <a href="#" className="hover:text-primary transition-colors">{item}</a>
                 </li>
@@ -66,9 +69,9 @@ const FooterSection = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2">
-              <li>123 Innovation Street</li>
-              <li>Tech City, TC 12345</li>
-              <li>Phone: (123) 456-7890</li>
+              <li>No. 414/65, 20th Main</li>
+              <li>West of Chord road,1st Block</li>
+              <li>Rajajinagar, Bangalore-560010</li>
               <li>Email: info@company.com</li>
             </ul>
           </div>
