@@ -1,6 +1,8 @@
 
+import HomeBlog from "@/components/blog/HomeBlog";
 import Herocta from "@/components/cta/Herocta";
 import DoctorSlider from "@/components/doctor/DoctorSlider";
+import FooterSection from "@/components/footer/FooterSection";
 import Navbar from "@/components/navbar/Navbar";
 import HospitalServices from "@/components/services/HospitalServices";
 import HeroSlider from "@/components/slider/Slider";
@@ -15,6 +17,8 @@ export default function Home() {
       <Herocta/>
       <DoctorSlider/>
       <HospitalServices/>
+      <HomeBlog/>
+      <FooterSection/>
       
     </main>
   );

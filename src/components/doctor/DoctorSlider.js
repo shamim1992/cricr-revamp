@@ -56,7 +56,7 @@ const DoctorSlider = () => {
   };
 
   return (
-    <div className=" mx-auto lg:px-24 ">
+    <div className=" mx-auto lg:px-24">
       <h2 className="text-3xl text-activeColor font-bold text-center mb-8">Our Doctors</h2>
       
       <div className="carousel w-full">
