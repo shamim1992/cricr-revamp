@@ -39,8 +39,8 @@ const Herocta = () => {
           ))}
         </div>
         
-        <div className="bg-gray-100 rounded-lg p-8">
-          <h2 className="text-3xl text-activeColor font-bold text-center mb-6">Download Intouch App</h2>
+        <div className="bg-gray-100 rounded-lg p-8 bg-hoverColor">
+          <h2 className="text-3xl text-white font-bold text-center mb-6">Download Intouch App</h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <Image src={sitelogo} alt="Intouch App" width={200} height={200} className="rounded-lg shadow-md" />
             <div className="text-center md:text-left">
