@@ -8,10 +8,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-     'activeColor':'#2f2f8d',
+     'activeColor':'#326cc9',
      'secondary':'#05aaf2',
      'white':'#FFFFFF',
-     'hoverColor': '#1e40af',
+     'hoverColor': '#326cc9',
      'black':'#000'
     },
   },

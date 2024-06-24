@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
+import { FaCalendarDays, FaRegCalendarDays, FaLocationArrow } from "react-icons/fa6";
 import Image from "next/image";
 import slider1 from '../../../public/assets/images/gallery/slide1.jpg'
 import slider2 from '../../../public/assets/images/gallery/slide2.jpg'
@@ -51,7 +52,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <div className='h-[560px] w-full m-auto  relative group'>
+    <div className='h-[350px] lg:h-[560px] w-full m-auto  relative group'>
       <div className='w-full h-full rounded-2xl bg-center bg-cover duration-500 relative '>
         <Image
           src={slides[currentIndex].image}
@@ -79,6 +80,11 @@ export default function HeroSlider() {
       {/* Right Arrow */}
       <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
         <BsChevronCompactRight onClick={nextSlide} size={30} />
+      </div>
+      <div className="md:flex hidden justify-around bg-hoverColor items-center  text-white">
+        <div className="flex items-center justify-center py-6"><FaCalendarDays /> &nbsp; Request appointment</div>
+        <div className="flex items-center justify-center py-6"><FaRegCalendarDays /> &nbsp; Book Health Check-up</div>
+        <div className="flex items-center justify-center py-6"><FaLocationArrow /> &nbsp; Contact & Direction</div>
       </div>
       {/* <div className='flex top-4 justify-center py-2'>
         {slides.map((slide, slideIndex) => (

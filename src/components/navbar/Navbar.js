@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import logo from '../../../public/assets/img/chanrelogo.png'
+import { BsInstagram, BsTwitter } from 'react-icons/bs';
+import { FaFacebook, FaLinkedin, FaOpencart } from "react-icons/fa";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,10 +15,26 @@ const Navbar = () => {
 
     return (
         <nav className=" shadow-xl">
+            <div className='header-top flex justify-between lg:px-24 py-2 items-center bg-activeColor text-white'>
+                <div className='flex-1 text-center lg:text-left'>
+                    <h2 className='text-sm'>Emergency: +91 8042516699</h2>
+                </div>
+                <div className='w-full flex-1 hidden lg:block'>
+                    <input type="text" placeholder='Search here...' className='p-2 text-sm rounded-2xl w-full' />
+                </div>
+                <div className='flex-1 '>
+                    <div className='float-end flex gap-2 justify-center'>
+                        <div><FaFacebook className='h-5 w-5' /></div>
+                        <div><BsInstagram className='h-5 w-5' /></div>
+                        <div><FaLinkedin className='h-5 w-5' /></div>
+                        <div><BsTwitter className='h-5 w-5' /></div>
+                    </div>
+                </div>
+            </div>
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-24">
                     <div className="flex-shrink-0 flex items-center">
-                        <Image src={logo} className='h-12 w-52' alt='logo' />
+                        <Image src={logo} className='h-auto w-auto' alt='logo' />
                     </div>
                     <div className="hidden lg:flex items-center justify-between flex-1 ml-12">
                         <div className="flex justify-center ">

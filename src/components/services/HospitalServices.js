@@ -53,7 +53,7 @@ const HospitalServices = () => {
   return (
     <section className="py-16 bg-white px-24">
       <div className=" mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-8">Our Services</h1>
+        <h1 className="text-3xl text-activeColor font-bold text-center mb-8">Our Services</h1>
         <div className="flex justify-end mb-4">
           <button
             className="btn btn-sm"

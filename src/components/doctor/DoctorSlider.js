@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 const doctors = [
-  { name: "Dr. Jane Smith", specialty: "Cardiologist", image: "https://chanrericr.com/images/doctor/mdoc.jpg" },
-  { name: "Dr. John Doe", specialty: "Neurologist", image: "https://chanrericr.com/images/doctor/mdoc.jpg" },
-  { name: "Dr. Emily Brown", specialty: "Pediatrician", image: "https://chanrericr.com/images/doctor/mdoc.jpg" },
+  { name: "Dr. Chandrashekara .S", specialty: "Clinical Immunology & Rheumatology", image: "https://chanrericr.com/images/doctor/Chandrashekara.jpg" },
+  { name: "Dr. Gaurang Deshpande", specialty: "Rheumatology", image: "https://chanrericr.com/images/doctor/gaurang.jpg" },
+  { name: "Dr. Dhanashree Gavali", specialty: "Rheumatology", image: "https://chanrericr.com/images/doctor/dhanashree.jpg" },
   { name: "Dr. Michael Lee", specialty: "Oncologist", image: "https://chanrericr.com/images/doctor/mdoc.jpg" },
   { name: "Dr. Sarah Johnson", specialty: "Dermatologist", image: "https://chanrericr.com/images/doctor/mdoc.jpg" },
   { name: "Dr. Robert Chen", specialty: "Orthopedic Surgeon", image: "https://chanrericr.com/images/doctor/mdoc.jpg" },
@@ -16,7 +16,7 @@ const doctors = [
 ];
 
 const DoctorCard = ({ doctor }) => (
-  <div className="card w-full bg-base-100 shadow-xl glass">
+  <div className="card  shadow-md">
     <figure className="px-10 pt-10">
       <img src={doctor.image} alt={doctor.name} width={200} height={200} className="rounded-xl" />
     </figure>
@@ -56,12 +56,12 @@ const DoctorSlider = () => {
   };
 
   return (
-    <div className=" mx-auto px-4 py-8 bg-activeColor">
-      <h2 className="text-3xl font-bold text-center mb-8 text-white">Our Doctors</h2>
+    <div className=" mx-auto lg:px-24 ">
+      <h2 className="text-3xl text-activeColor font-bold text-center mb-8">Our Doctors</h2>
       
       <div className="carousel w-full">
         <div className="carousel-item relative w-full">
-          <div className="flex flex-col md:flex-row justify-center w-full gap-4 px-4 md:px-8">
+          <div className="flex flex-col md:flex-row justify-center w-full gap-4 px-4 md:px-8 my-3">
             {doctors.slice(currentSlide * cardsPerSlide, (currentSlide + 1) * cardsPerSlide).map((doctor, index) => (
               <DoctorCard key={index} doctor={doctor} />
             ))}
