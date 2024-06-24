@@ -5,14 +5,14 @@ import { FaThList, FaHeartbeat, FaAllergies, FaBone, FaPrescription, FaBaby, FaY
 import { motion } from 'framer-motion';
 
 const services = [
-  { name: 'Rheumatology & Immunology', icon: FaHeartbeat, color: 'bg-red-100', description: 'Specialized care for autoimmune and inflammatory disorders.' },
-  { name: 'Immuno Deficiency', icon: FaLungs, color: 'bg-blue-100', description: 'Treatment for disorders affecting the immune system.' },
-  { name: 'Joint Preservation and Restoration', icon: FaBone, color: 'bg-green-100', description: 'Advanced techniques to preserve and restore joint function.' },
-  { name: 'Integrated Pain Management (IPM)', icon: FaPrescription, color: 'bg-yellow-100', description: 'Comprehensive approach to managing chronic pain.' },
+  { name: 'Rheumatology & Immunology', icon: FaHeartbeat, color: 'bg-red-100', description: 'The Rheumatology and immunology department is one of its kind specialty clinic spearheaded by experienced immunologist and rheumatologists' },
+  { name: 'Immuno Deficiency', icon: FaLungs, color: 'bg-blue-100', description: 'The department is conceptualized to provide high quality and compassionate care for patients with Immunodeficiency syndromes.' },
+  { name: 'Joint Preservation and Restoration', icon: FaBone, color: 'bg-green-100', description: 'This is an integrated consultation system,providing orthopedic expertise for preservation and restoration of joints.' },
+  { name: 'Integrated Pain Management (IPM)', icon: FaPrescription, color: 'bg-yellow-100', description: 'Pain is the most common and challenging symptom for all musculoskeletal disorders.' },
   { name: 'Reproductive Immunology & High Risk Pregnancy', icon: FaBaby, color: 'bg-pink-100', description: 'Specialized care for complex pregnancies and fertility issues.' },
-  { name: 'Allergy', icon: FaAllergies, color: 'bg-purple-100', description: 'Diagnosis and treatment of various allergic conditions.' },
-  { name: 'Physiotherapy', icon: FaRunning, color: 'bg-indigo-100', description: 'Rehabilitation services to improve mobility and function.' },
-  { name: 'Yoga Therapy', icon: FaYinYang, color: 'bg-teal-100', description: 'Therapeutic application of yoga for health and wellness.' },
+  { name: 'Allergy', icon: FaAllergies, color: 'bg-purple-100', description: 'Allergic respiratory disorders in particular asthma and respiratory tract infections are increasing in the developed and in developing countries.' },
+  { name: 'Physiotherapy', icon: FaRunning, color: 'bg-indigo-100', description: 'Our Physiotherapy & Rehabilitation center provides a full range of services to help patients prevent injury and disease, recover function and strength, and reduce pain.' },
+  { name: 'Yoga Therapy', icon: FaYinYang, color: 'bg-teal-100', description: 'Yoga therapy is the traditional way to heal your body through meditation.' },
 ];
 
 const ServiceCard = ({ service }) => {
@@ -20,13 +20,13 @@ const ServiceCard = ({ service }) => {
 
   return (
     <motion.div
-      className={`card shadow-lg ${service.color} border-2 border-gray-200 cursor-pointer overflow-hidden`}
+      className={`card shadow-lg ${service.color}  cursor-pointer overflow-hidden`}
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="card-body text-gray-800">
+      <div className="card-body ">
         <h2 className="card-title flex items-center text-xl font-semibold">
           <service.icon className="mr-3 text-2xl text-blue-600" />
           {service.name}
@@ -59,7 +59,7 @@ const HospitalServices = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl text-activeColor text-blue-600 font-bold text-center mb-12">Our Services</h1>
+        <h1 className="text-3xl text-activeColor font-bold text-center mb-12">Our Services</h1>
         {/* <div className="flex justify-end mb-6">
           <button
             className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
