@@ -19,8 +19,8 @@ const Herocta = () => {
     },
     {
       icon: <FaAmbulance className="text-4xl text-blue-600" />,
-      title: "Ambulance Service",
-      description: "Quick and efficient ambulance service for emergencies."
+      title: "Why Us?",
+      description: "ChanRe Rheumatology & Immunology Center & Research is a unique one of its kind hospital in India dedicated for management of patients."
     }
   ];
 

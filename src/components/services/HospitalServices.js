@@ -59,8 +59,8 @@ const HospitalServices = () => {
   return (
     <section className="py-16 bg-gradient-to-b from-white to-gray-100">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl text-blue-600 font-bold text-center mb-12">Our Services</h1>
-        <div className="flex justify-end mb-6">
+        <h1 className="text-3xl text-activeColor text-blue-600 font-bold text-center mb-12">Our Services</h1>
+        {/* <div className="flex justify-end mb-6">
           <button
             className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white"
             onClick={() => setIsGridView(!isGridView)}
@@ -68,7 +68,7 @@ const HospitalServices = () => {
             {isGridView ? <FaThList className="mr-2" /> : <BsUiChecksGrid className="mr-2" />}
             {isGridView ? 'List View' : 'Grid View'}
           </button>
-        </div>
+        </div> */}
         <motion.div
           className={`grid gap-6 ${
             isGridView ? 'md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'

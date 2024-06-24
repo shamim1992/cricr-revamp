@@ -1,4 +1,8 @@
-<div className="mt-16 bg-white rounded-lg shadow-md overflow-hidden">
+import React from 'react'
+import Image from 'next/image'
+const DoctorList = () => {
+  return (
+    <div className="mt-16 bg-white rounded-lg shadow-md overflow-hidden">
           <div className="md:flex items-center">
             <div className="md:flex-shrink-0">
               <Image 
@@ -22,3 +26,7 @@
             </div>
           </div>
         </div>
+  )
+}
+
+export default DoctorList
