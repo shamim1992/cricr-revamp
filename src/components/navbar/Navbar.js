@@ -4,23 +4,58 @@ import React, { useState } from 'react'
 import logo from '../../../public/assets/img/chanrelogo.png'
 import { BsInstagram, BsTwitter } from 'react-icons/bs';
 import { FaFacebook, FaLinkedin, FaOpencart } from "react-icons/fa";
+import Link from 'next/link';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const navItems = [
-        "Home", "Academics", "R&D", "Doctor", "About Us",
-        "Services", "News & Events", "Patient Corner", "Contact"
+        {
+            title: "Home",
+            url: "/"
+        },
+        {
+            title: "Academics",
+            url: "/academics"
+        },
+        {
+            title: "R&D",
+            url: "/rnd"
+        },
+        {
+            title: "Doctor",
+            url: "/doctor"
+        },
+        {
+            title: "About Us",
+            url: "/aboutus"
+        },
+        {
+            title: "Services",
+            url: "/services"
+        },
+        {
+            title: "News & Events",
+            url: "/newsandevents"
+        },
+        {
+            title: "Patient Corner",
+            url: "/patientcorner"
+        },
+        {
+            title: "Contact",
+            url: "/contact"
+        }
     ];
 
     return (
-        <nav className=" shadow-xl">
+        <nav className=" shadow-md">
             <div className='header-top flex justify-between lg:px-24 py-2 items-center bg-activeColor text-white'>
                 <div className='flex-1 text-center lg:text-left'>
                     <h2 className='text-sm'>Emergency: +91 8042516699</h2>
                 </div>
                 <div className='w-full flex-1 hidden lg:block'>
-                    <input type="text" placeholder='Search here...' className='p-2 text-sm rounded-2xl w-full' />
+                    {/* <input type="text" placeholder='Search here...' className='p-2 text-sm rounded-2xl w-full' /> */}
                 </div>
                 <div className='flex-1 '>
                     <div className='float-end flex gap-2 justify-center'>
@@ -39,9 +74,9 @@ const Navbar = () => {
                     <div className="hidden lg:flex items-center justify-between flex-1 ml-12">
                         <div className="flex justify-center ">
                             {navItems.map((item, index) => (
-                                <a key={index} href="#" className="px-3 py-2 text-md font-medium text-gray-700 hover:text-white hover:bg-hoverColor rounded-md transition duration-300">
-                                    {item}
-                                </a>
+                                <Link key={index} href={item.url} className="px-3 py-2 text-md font-medium text-gray-700 hover:text-white hover:bg-hoverColor rounded-md transition duration-300">
+                                    {item.title}
+                                </Link>
                             ))}
                         </div>
                         <div className="flex items-center">
@@ -71,8 +106,8 @@ const Navbar = () => {
                 <div className="lg:hidden">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navItems.map((item, index) => (
-                            <a key={index} href="#" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700  hover:bg-blue-600">
-                                {item}
+                            <a key={index} href={item.url} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700  hover:bg-blue-600">
+                                {item.title}
                             </a>
                         ))}
                     </div>
