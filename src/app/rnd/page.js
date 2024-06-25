@@ -1,6 +1,8 @@
 import FooterSection from '@/components/footer/FooterSection'
 import Navbar from '@/components/navbar/Navbar'
 import React from 'react'
+import pic1 from '../../../public/assets/img/Picture1.png'
+import Image from 'next/image'
 
 const Rnd = () => {
 
@@ -77,6 +79,13 @@ const Rnd = () => {
               </tbody>
             </table>
           </div>
+        </div>
+        <div>
+          <h2 className='text-center text-xl font-bold py-6'>Our R & D Collaborator</h2>
+          <div className='card'>
+                <Image src={pic1} alt='collaborator' className='h-96 w-96 mx-auto shadow-lg p-4 rounded-xl'/>
+          </div>
+          
         </div>
       </div>
 

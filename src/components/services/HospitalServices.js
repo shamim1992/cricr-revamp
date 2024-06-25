@@ -69,6 +69,7 @@ const HospitalServices = () => {
             {isGridView ? 'List View' : 'Grid View'}
           </button>
         </div> */}
+        
         <motion.div
           className={`grid gap-6 ${
             isGridView ? 'md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'
