@@ -1,3 +1,4 @@
+"use client"
 import FooterSection from '@/components/footer/FooterSection'
 import Navbar from '@/components/navbar/Navbar'
 import React from 'react'
