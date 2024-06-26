@@ -5,50 +5,50 @@ import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of AI in Healthcare",
-      excerpt: "Exploring how artificial intelligence is revolutionizing medical diagnoses and treatment plans.",
-      imageUrl: "https://picsum.photos/seed/health1/800/600",
-      author: "Admin",
-      date: "May 15, 2024",
-    },
-    {
-      id: 2,
-      title: "5 Tips for a Healthy Heart",
-      excerpt: "Simple lifestyle changes that can significantly improve your cardiovascular health.",
-      imageUrl: "https://picsum.photos/seed/health2/800/600",
-      author: "Admin",
-      date: "May 10, 2024",
-    },
-    {
-      id: 3,
-      title: "Understanding Telemedicine",
-      excerpt: "How virtual consultations are changing the landscape of patient care.",
-      imageUrl: "https://picsum.photos/seed/health3/800/600",
-      author: "Admin",
-      date: "May 5, 2024",
-    },
-    {
-      id: 4,
-      title: "Nutrition Myths Debunked",
-      excerpt: "Separating fact from fiction in the world of diet and nutrition.",
-      imageUrl: "https://picsum.photos/seed/health4/800/600",
-      author: "Admin",
-      date: "April 30, 2024",
-    },
-    {
-      id: 5,
-      title: "The Importance of Mental Health",
-      excerpt: "Why taking care of your mental wellbeing is crucial for overall health.",
-      imageUrl: "https://picsum.photos/seed/health5/800/600",
-      author: "Admin",
-      date: "April 25, 2024",
-    },
-  ];
+  {
+    id: 1,
+    title: "The Future of AI in Healthcare",
+    excerpt: "Exploring how artificial intelligence is revolutionizing medical diagnoses and treatment plans.",
+    imageUrl: "https://picsum.photos/seed/health1/800/600",
+    author: "Admin",
+    date: "May 15, 2024",
+  },
+  {
+    id: 2,
+    title: "5 Tips for a Healthy Heart",
+    excerpt: "Simple lifestyle changes that can significantly improve your cardiovascular health.",
+    imageUrl: "https://picsum.photos/seed/health2/800/600",
+    author: "Admin",
+    date: "May 10, 2024",
+  },
+  {
+    id: 3,
+    title: "Understanding Telemedicine",
+    excerpt: "How virtual consultations are changing the landscape of patient care.",
+    imageUrl: "https://picsum.photos/seed/health3/800/600",
+    author: "Admin",
+    date: "May 5, 2024",
+  },
+  {
+    id: 4,
+    title: "Nutrition Myths Debunked",
+    excerpt: "Separating fact from fiction in the world of diet and nutrition.",
+    imageUrl: "https://picsum.photos/seed/health4/800/600",
+    author: "Admin",
+    date: "April 30, 2024",
+  },
+  {
+    id: 5,
+    title: "The Importance of Mental Health",
+    excerpt: "Why taking care of your mental wellbeing is crucial for overall health.",
+    imageUrl: "https://picsum.photos/seed/health5/800/600",
+    author: "Admin",
+    date: "April 25, 2024",
+  },
+];
 
 const BlogCard = ({ post }) => (
-  <motion.div 
+<motion.div 
     className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full"
     whileHover={{ scale: 1.03 }}
     transition={{ duration: 0.3 }}
@@ -57,8 +57,9 @@ const BlogCard = ({ post }) => (
       <Image
         src={post.imageUrl}
         alt={post.title}
-        layout="fill"
-        objectFit="cover"
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        style={{ objectFit: "cover" }}
       />
     </div>
     <div className="p-6 flex flex-col flex-grow">
@@ -72,7 +73,7 @@ const BlogCard = ({ post }) => (
   </motion.div>
 );
 
-const HomeBlog= () => {
+const HomeBlog = () => {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -103,24 +104,22 @@ const HomeBlog= () => {
     <section className=" bg-gray-100">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-activeColor">Our Blog</h2>
-        
+
         <div className="relative">
           {/* Desktop and Tablet Scroll Buttons */}
           <div className="hidden md:block">
             <button
               onClick={() => scroll('left')}
-              className={`absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 ${
-                canScrollLeft ? 'opacity-100' : 'opacity-0'
-              } transition-opacity duration-300`}
+              className={`absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 ${canScrollLeft ? 'opacity-100' : 'opacity-0'
+                } transition-opacity duration-300`}
               disabled={!canScrollLeft}
             >
               <FaChevronLeft className="text-gray-600" />
             </button>
             <button
               onClick={() => scroll('right')}
-              className={`absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 ${
-                canScrollRight ? 'opacity-100' : 'opacity-0'
-              } transition-opacity duration-300`}
+              className={`absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg z-10 ${canScrollRight ? 'opacity-100' : 'opacity-0'
+                } transition-opacity duration-300`}
               disabled={!canScrollRight}
             >
               <FaChevronRight className="text-gray-600" />

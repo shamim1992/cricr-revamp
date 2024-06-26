@@ -69,7 +69,12 @@ const Navbar = () => {
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-24">
                     <div className="flex-shrink-0 flex items-center">
-                        <Image src={logo} className='h-auto w-auto' alt='logo' />
+                    <Image 
+        src={logo} 
+        className='h-auto w-auto' 
+        alt='logo' 
+        priority // Add this line
+    />
                     </div>
                     <div className="hidden lg:flex items-center justify-between flex-1 ml-12">
                         <div className="flex justify-center ">

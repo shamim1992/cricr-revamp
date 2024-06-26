@@ -38,11 +38,11 @@ const Herocta = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="bg-gray-100 rounded-lg p-8 bg-hoverColor">
           <h2 className="text-3xl text-white font-bold text-center mb-6">Download Intouch App</h2>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Image src={sitelogo} alt="Intouch App" width={200} height={200} className="rounded-lg shadow-md" />
+            <Image src={sitelogo} alt="Intouch App"  className="rounded-lg shadow-md h-auto w-auto" />
             <div className="text-center text-white md:text-left">
               <p className="text-lg mb-4">Get instant access to our medical services with our Intouch app. Book appointments, consult doctors, and manage your health records all in one place.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">

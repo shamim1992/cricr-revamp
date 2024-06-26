@@ -54,14 +54,12 @@ export default function HeroSlider() {
   return (
     <div className='h-[350px] lg:h-[560px] w-full m-auto  relative group'>
       <div className='w-full h-full rounded-2xl bg-center bg-cover duration-500 relative '>
-        <Image
-          src={slides[currentIndex].image}
-          alt={`Slide ${currentIndex + 1}`}
-          layout="fill"
-          objectFit="cover"
-          className=" bg-center bg-cover object-cover"
-         
-        />
+      <Image
+  src={slides[currentIndex].image}
+  alt={`Slide ${currentIndex + 1}`}
+  fill
+  className="object-cover bg-center"
+/>
         <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center  items-center  p-8">
           <h2 className="text-3xl font-bold mb-4 text-white">{slides[currentIndex].title}</h2>
           <p className="text-xl mb-8 text-white">{slides[currentIndex].description}</p>
