@@ -1,5 +1,6 @@
 import FooterSection from '@/components/footer/FooterSection'
 import Navbar from '@/components/navbar/Navbar'
+import RAVisualization from '@/components/rheumatoid/RAVisualization'
 import React from 'react'
 
 const AboutUs = () => {
@@ -29,6 +30,7 @@ const AboutUs = () => {
         <p className="pb-6">We are also conducting the patients awareness programmes as internet-based weekly virtual sessions through YouTube / Facebook for wider dissemination of knowledge relating to immunological diseases among public and patient groups.</p>
         <p className="pb-6">As a stepping stone towards better standardization, the institute has started the process of accreditation to NABH by standardizing all the protocols .</p>
       </div>
+      <RAVisualization/>
       <FooterSection />
     </div>
   )

@@ -1,32 +1,100 @@
-import React from 'react'
-import Image from 'next/image'
-const DoctorList = () => {
-  return (
-    <div className="mt-16 bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="md:flex items-center">
-            <div className="md:flex-shrink-0">
-              <Image 
-              className="object-cover"
-                src={sitelogo} // Replace with your image path
-                alt="Hospital Building"
-                width={400}
-                height={300}
-                objectFit="cover"
-              />
-            </div>
-            <div className="p-8">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">About Us</h3>
-              <p className="text-gray-600 mb-4">
-              CRICR was established on 12th Dec 2002 by Dr. Chandrashekara. S Rheumatologist. A unique one of its kind hospital in India, dedicated for management of patients suffering from Rheumatic Diseases (Musculoskeletal) and other Immunological diseases. It provides under one roof, a complete care to the patients suffering from Arthritis and other Immunological Diseases such as Immune-Deficiency Disorders, Allergic Disorders and Immuno-hematological disorders. This center is a tertiary reference facility.
-              </p>
-              <p className="text-gray-600 mb-4">CRICR has created a newly established infrastructure with modern and improved additional facilities with the amenities to accommodate more associated specialties and sub-specialties for the benefit of patients with a vision to deliver the best in the field of immunology & rheumatology. The new facility is fully equipped with modern technologies and it is aimed at providing a comprehensive specialty approach with in-patient, emergency and cutting-edge research facilities.</p>
-              <a href="/facilities" className="inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-300">
-                Learn More
-              </a>
-            </div>
-          </div>
-        </div>
-  )
-}
+'use client'
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import FooterSection from '../footer/FooterSection';
 
-export default DoctorList
+const DoctorsList = () => {
+  const [doctors, setDoctors] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [selectedDepartment, setSelectedDepartment] = useState('');
+  const [selectedDoctor, setSelectedDoctor] = useState('');
+
+  useEffect(() => {
+    setDoctors([
+      { id: 1, name: 'Dr. Chandrashekara .S', department: 'Rheumatology & Autoimmune Diseases', qualification: 'MD, DNB, DM', photo: 'https://chanrericr.com/images/doctor/Chandrashekara.jpg' },
+      { id: 2, name: 'Dr. Gaurang Deshpande', department: 'Rheumatology & Autoimmune Diseases', qualification: 'MBBS, DM, MD', photo: 'https://chanrericr.com/images/doctor/gaurang.jpg' },
+      { id: 3, name: 'Dr. Michael Johnson', department: 'Orthopedics', qualification: 'MBBS, MS', photo: '/images/doctor3.jpg' },
+      { id: 4, name: 'Dr. Emily Brown', department: 'Pediatrics', qualification: 'MD, FAAP', photo: '/images/doctor4.jpg' },
+      { id: 5, name: 'Dr. David Lee', department: 'Oncology', qualification: 'MD, PhD', photo: '/images/doctor5.jpg' },
+      { id: 6, name: 'Dr. Sarah Wilson', department: 'Dermatology', qualification: 'MD, FAAD', photo: '/images/doctor6.jpg' },
+      { id: 7, name: 'Dr. Robert Taylor', department: 'Gastroenterology', qualification: 'MD, FACG', photo: '/images/doctor7.jpg' },
+      { id: 8, name: 'Dr. Jennifer Martinez', department: 'Endocrinology', qualification: 'MD, FACE', photo: '/images/doctor8.jpg' },
+      { id: 9, name: 'Dr. William Anderson', department: 'Pulmonology', qualification: 'MD, FCCP', photo: '/images/doctor9.jpg' },
+      { id: 10, name: 'Dr. Lisa Thompson', department: 'Gynecology', qualification: 'MD, FACOG', photo: '/images/doctor10.jpg' },
+      { id: 11, name: 'Dr. James Wilson', department: 'Urology', qualification: 'MD, FACS', photo: '/images/doctor11.jpg' },
+      { id: 12, name: 'Dr. Mary Roberts', department: 'Psychiatry', qualification: 'MD, FAPA', photo: '/images/doctor12.jpg' },
+      { id: 13, name: 'Dr. Thomas Clark', department: 'Ophthalmology', qualification: 'MD, FACS', photo: '/images/doctor13.jpg' },
+      { id: 14, name: 'Dr. Patricia White', department: 'Rheumatology', qualification: 'MD, FACR', photo: '/images/doctor14.jpg' },
+      { id: 15, name: 'Dr. Christopher Lewis', department: 'Nephrology', qualification: 'MD, FASN', photo: '/images/doctor15.jpg' }
+    ])
+
+    setDepartments(['Rheumatology & Autoimmune Diseases','Oncology','Cardiology', 'Neurology', 'Pediatrics', 'Orthopedics','Rheumatology','Ophthalmology','Nephrology']);
+  }, []);
+
+  const filteredDoctors = selectedDepartment
+    ? doctors.filter(doctor => doctor.department === selectedDepartment)
+    : doctors;
+
+  return (
+    <div>
+    <div className="container mx-auto p-4">
+      <h1 className="text-4xl font-bold text-center mb-8">Our Doctors</h1>
+
+      <div className="flex justify-center mb-8">
+        <div className="join">
+          <select 
+            className="select select-bordered join-item"
+            value={selectedDepartment}
+            onChange={(e) => setSelectedDepartment(e.target.value)}
+          >
+            <option value="">All Departments</option>
+            {departments.map(dept => (
+              <option key={dept} value={dept}>{dept}</option>
+            ))}
+          </select>
+          <select 
+            className="select select-bordered join-item"
+            value={selectedDoctor}
+            onChange={(e) => setSelectedDoctor(e.target.value)}
+          >
+            <option value="">Select Doctor</option>
+            {filteredDoctors.map(doctor => (
+              <option key={doctor.id} value={doctor.id}>{doctor.name}</option>
+            ))}
+          </select>
+          <button className="btn join-item">Search</button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredDoctors.map(doctor => (
+          <motion.div
+            key={doctor.id}
+            className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <figure className="px-10 pt-10">
+              <img src={doctor.photo} alt={doctor.name} className="rounded-xl w-48 h-48 object-cover" />
+            </figure>
+            <div className="card-body items-center text-center">
+              <h2 className="card-title">{doctor.name}</h2>
+              <p>{doctor.qualification}</p>
+              <p className="text-sm text-gray-500">{doctor.department}</p>
+              <div className="card-actions justify-end mt-4 text-white">
+                <Link className="btn btn-sm bg-activeColor text-white" href={`/doctor/${doctor.id}`}>Visit Profile</Link>
+                <button className="btn btn-sm bg-activeColor text-white">Book Appointment</button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      
+    </div>
+    <FooterSection/>
+    </div>
+  );
+};
+
+export default DoctorsList;
