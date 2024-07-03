@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import FooterSection from '@/components/footer/FooterSection';
 import Navbar from '@/components/navbar/Navbar';
+import Image from 'next/image';
 
 export default function PostPage() {
     const { id } = useParams();
@@ -25,7 +26,7 @@ export default function PostPage() {
         <Navbar/>
         
         <div className="flex justify-center items-center min-h-screen">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-activeColor"></div>
     </div>
 
         <FooterSection />
@@ -44,11 +45,11 @@ export default function PostPage() {
             </Head>
             <div className="container mx-auto px-4 lg:px-24 py-8">
                 <h1 className="text-3xl text-center font-bold mb-4">{post.PostTitle}</h1>
-                <img
+                {/* <Image
                     src={`https://chanrericr.com/blog/admin/postimages/${post.PostImage}`}
                     alt={post.PostTitle}
-                    className="w-[50%] mx-auto h-auto mb-4"
-                />
+                    className="object-cover w-full h-48" 
+                /> */}
                 <div dangerouslySetInnerHTML={{ __html: post.PostDetails }} />
                 <p className="mt-4 text-sm text-base-content opacity-50">Posted on: {formattedDate}</p>
             </div>

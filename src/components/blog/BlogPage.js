@@ -31,7 +31,7 @@ fetchData();
 
   const Loader = () => (
     <div className="flex justify-center items-center h-64">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-activeColor"></div>
     </div>
   );
 
@@ -62,7 +62,7 @@ fetchData();
           {currentPosts?.map((post) => (
             <article key={post.id} className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <figure>
-                <img
+                <Image
                   src={`https://chanrericr.com/blog/admin/postimages/${post.PostImage}`}
                   alt={post.title}
                   width={600}
