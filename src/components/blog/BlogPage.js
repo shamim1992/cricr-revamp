@@ -114,7 +114,7 @@ fetchData();
 
      
       </div>
-      <FooterSection/>
+   
     </>
   );
 }
