@@ -53,9 +53,9 @@ const academics = () => {
                         <div className="mt-12 bg-base-100 p-6 rounded-box shadow-md">
                             {activeCard === 0 && (
                                 <div>
-                                    <h3 className="text-2xl font-semibold mb-4">Post MD (Gen. Medicine) Fellowship in Rheumatology & immunology</h3>
+                                    <h3 className="text-sm lg:text-md font-semibold mb-4">Post MD (Gen. Medicine) Fellowship in Rheumatology & immunology</h3>
                                     <div className=''>
-                                      <Image src={`https://chanrericr.com/img/academycourse.jpg`} className="h-32" height={300} width={500}/>
+                                      <Image src={`https://chanrericr.com/img/academycourse.jpg`} className="md:h-[80%] md:w-[50%] w-[100%] mx-auto" height={300} width={500}/>
                                     </div>
                                 </div>
                             )}
