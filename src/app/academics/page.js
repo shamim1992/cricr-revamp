@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar/Navbar'
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-const academics = () => {
+const Academics = () => {
     const [activeCard, setActiveCard] = useState(null);
 
     const cards = [
@@ -80,4 +80,4 @@ const academics = () => {
     )
 }
 
-export default academics
+export default Academics
