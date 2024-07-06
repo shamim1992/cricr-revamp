@@ -71,7 +71,7 @@ export default function OurServices() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <div key={index} className="card bg-base-100 shadow-md hover:shadow-2xl transition-shadow duration-300">
               {/* <figure className="px-10 pt-10">
                 <Image src={service.icon} alt={service.title} width={64} height={64} />
               </figure> */}

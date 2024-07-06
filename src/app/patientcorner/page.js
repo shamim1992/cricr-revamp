@@ -50,7 +50,7 @@ const PatientCorner = () => {
                         {cards.map((card, index) => (
                             <div
                                 key={index}
-                                className={`card shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                                className={`card shadow-md transition-all duration-300 transform hover:scale-105 cursor-pointer ${
                                     activeCard === index ? 'ring-4 ring-offset-2 ring-activeColor' : ''
                                 }`}
                                 onClick={() => setActiveCard(index)}
@@ -65,7 +65,7 @@ const PatientCorner = () => {
                     </div>
 
                     {activeCard !== null && (
-                        <div className="mt-12 bg-base-100 p-6 rounded-box shadow-lg">
+                        <div className="mt-12 bg-base-100 p-6 rounded-box shadow-md">
                             {/* <h3 className="text-2xl font-semibold mb-4">{cards[activeCard].title}</h3> */}
                             {React.createElement(cards[activeCard].component)}
                         </div>
