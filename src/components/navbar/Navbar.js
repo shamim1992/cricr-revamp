@@ -50,31 +50,31 @@ const Navbar = () => {
 
     return (
         <nav className=" shadow-md">
-            <div className='header-top flex justify-between lg:px-24 py-2 items-center bg-activeColor text-white'>
+            <div className='header-top flex justify-between px-4 lg:px-24 py-2 items-center bg-activeColor text-white'>
                 <div className='flex-1 text-center lg:text-left'>
-                    <h2 className='text-sm'>Emergency: +91 8042516699</h2>
+                    <h2 className='text-xs md:text-sm'>Emergency: +91 8042516699</h2>
                 </div>
                 <div className='w-full flex-1 hidden lg:block'>
                     {/* <input type="text" placeholder='Search here...' className='p-2 text-sm rounded-2xl w-full' /> */}
                 </div>
                 <div className='flex-1 '>
                     <div className='float-end flex gap-2 justify-center'>
-                        <div><FaFacebook className='h-5 w-5' /></div>
-                        <div><BsInstagram className='h-5 w-5' /></div>
-                        <div><FaLinkedin className='h-5 w-5' /></div>
-                        <div><BsTwitter className='h-5 w-5' /></div>
+                        <div><FaFacebook className='lg:h-5 lg:w-5 h-4 w-4' /></div>
+                        <div><BsInstagram className='lg:h-5 lg:w-5 h-4 w-4' /></div>
+                        <div><FaLinkedin className='lg:h-5 lg:w-5 h-4 w-4' /></div>
+                        <div><BsTwitter className='lg:h-5 lg:w-5 h-4 w-4' /></div>
                     </div>
                 </div>
             </div>
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-24">
                     <div className="flex-shrink-0 flex items-center">
-                    <Image 
-        src={logo} 
-        className='h-auto w-auto' 
-        alt='logo' 
-        priority // Add this line
-    />
+                     <Link href={`/`}><Image
+                            src={logo}
+                            className='h-auto w-auto'
+                            alt='logo'
+                            priority // Add this line
+                        /></Link>   
                     </div>
                     <div className="hidden lg:flex items-center justify-between flex-1 ml-12">
                         <div className="flex justify-center ">
