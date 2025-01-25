@@ -85,9 +85,9 @@ const Navbar = () => {
                             ))}
                         </div>
                         <div className="flex items-center">
-                            <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-md bg-activeColor hover:bg-hoverColor transition duration-300 text-md font-medium">
-                                Appointment
-                            </a>
+                            <Link href={'/auth/login'} className="bg-blue-600 text-white px-4 py-2 rounded-md bg-activeColor hover:bg-hoverColor transition duration-300 text-md font-medium">
+                                Login
+                            </Link>
                         </div>
                     </div>
                     <div className="-mr-2 flex lg:hidden">
@@ -118,9 +118,9 @@ const Navbar = () => {
                     </div>
                     <div className="pt-4 pb-3 border-t border-gray-200">
                         <div className="flex items-center px-5">
-                            <a href="#" className="block px-3 py-2 rounded-md text-base font-medium  bg-blue-600 bg-blue-700">
-                                Appointment
-                            </a>
+                            <Link href={'/auth/login'} className="block px-3 py-2 rounded-md text-base font-medium  bg-blue-600 bg-blue-700">
+                                Login
+                            </Link>
                         </div>
                     </div>
                 </div>
