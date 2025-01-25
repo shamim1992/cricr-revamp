@@ -19,7 +19,6 @@ export default function Home() {
       <DoctorSlider/>
       <HospitalServices/>
       <HomeBlog/>
-      {/* <ProductSection/> */}
       <FooterSection/>
       
     </main>

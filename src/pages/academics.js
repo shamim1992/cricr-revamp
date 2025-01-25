@@ -61,7 +61,7 @@ const Academics = () => {
                             )}
                             {activeCard === 1 && (
                                 <div>
-                                    <h3 className="text-2xl font-semibold mb-4">Phd Programme</h3>
+                                    <h3 className="text-2xl font-semibold mb-4">Ph.D Programme</h3>
                                     <p>Coming Soon...</p>
                                 </div>
                             )}

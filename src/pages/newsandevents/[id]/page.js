@@ -23,22 +23,22 @@ export default function PostPage() {
     }, [id]);
 
     if (!post) return <div>
-        <Navbar/>
-        
+        <Navbar />
+
         <div className="flex justify-center items-center min-h-screen">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-activeColor"></div>
-    </div>
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-activeColor"></div>
+        </div>
 
         <FooterSection />
-        
-        </div>;
+
+    </div>;
 
     // Parse the PostingDate string into a Date object and format it
     const formattedDate = new Date(post.PostingDate).toLocaleDateString();
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <Head>
                 <title>{post.PostTitle}</title>
                 <meta name="description" content={post.PostTitle} />

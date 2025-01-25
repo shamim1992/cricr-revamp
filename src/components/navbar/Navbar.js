@@ -28,7 +28,7 @@ const Navbar = () => {
         },
         {
             title: "About Us",
-            url: "/aboutus"
+            url: "/about"
         },
         {
             title: "Services",

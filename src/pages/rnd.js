@@ -2,9 +2,9 @@
 import FooterSection from '@/components/footer/FooterSection'
 import Navbar from '@/components/navbar/Navbar'
 import React from 'react'
-import pic1 from '../../../public/assets/img/Picture1.png'
-import pic2 from '../../../public/assets/img/Picture2.png'
-import pic3 from '../../../public/assets/img/Picture3.png'
+import pic1 from '../../public/assets/img/Picture1.png'
+import pic2 from '../../public/assets/img/Picture2.png'
+import pic3 from '../../public/assets/img/Picture3.png'
 import Image from 'next/image'
 
 const Rnd = () => {

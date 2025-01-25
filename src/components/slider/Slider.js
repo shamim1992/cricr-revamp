@@ -57,7 +57,7 @@ export default function HeroSlider() {
       <Image
   src={slides[currentIndex].image}
   alt={`Slide ${currentIndex + 1}`}
-  fill
+  fill priority
   className="object-cover bg-center"
 />
         <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center  items-center  p-8">
