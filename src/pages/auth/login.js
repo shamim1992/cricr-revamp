@@ -1,13 +1,11 @@
-// src/pages/auth/login.js
+// pages/auth/login.js
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { loginUser } from '@/redux/actions/authActions';
 import { clearError } from '@/redux/slices/authSlice';
 import { toast } from 'react-toastify';
 
-// Constants
 const MAX_LOGIN_ATTEMPTS = 5;
 const LOCKOUT_TIME = 15 * 60 * 1000; // 15 minutes
 
@@ -18,16 +16,19 @@ const Login = () => {
     rememberMe: false,
     showPassword: false
   });
-
   
   const [loginAttempts, setLoginAttempts] = useState(0);
-  
   const dispatch = useDispatch();
-  const router = useRouter();
   
-  const { loading, error, user} = useSelector((state) => state.auth);
+  // Select only needed state to prevent unnecessary re-renders
+  const { loading, error, user } = useSelector((state) => ({
+    loading: state.auth.loading,
+    error: state.auth.error,
+    user: state.auth.user
+  }));
 
-  console.log(user?.role)
+  
+
   useEffect(() => {
     // Check for remembered email
     const rememberedEmail = localStorage.getItem('rememberedEmail');
@@ -36,10 +37,11 @@ const Login = () => {
     }
 
     // Redirect if already logged in
-    if (user) {
+    if (user?.role) {
+      console.log("User is logged in with role:", user.role);
       redirectBasedOnRole(user.role);
     }
-  }, [user, router]);
+  }, [user]);
 
   // Clear errors on unmount
   useEffect(() => {
@@ -49,19 +51,25 @@ const Login = () => {
   }, [dispatch]);
 
   const redirectBasedOnRole = (role) => {
+    console.log("Redirecting user with role:", role);
+    
     const roleRoutes = {
       admin: '/dashboard/admin',
       doctor: '/dashboard/doctor',
       receptionist: '/dashboard/receptionist',
       accountant: '/dashboard/accountant',
-      default: '/'  
+      user: '/'
     };
-  
-    const route = roleRoutes[role] || roleRoutes.default;
-    router.push(route, undefined, { shallow: true });
-  };
 
-  
+    const route = roleRoutes[role];
+    if (route) {
+      console.log("Redirecting to:", route);
+      window.location.href = route;
+    } else {
+      console.log("No matching route found, redirecting to home");
+    //   window.location.href = '/';
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -71,24 +79,23 @@ const Login = () => {
     }));
   };
 
-  const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
-
   const validateForm = () => {
     if (!formData.email || !formData.password) {
       toast.error('Please fill in all fields');
       return false;
     }
-    if (!validateEmail(formData.email)) {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
       toast.error('Please enter a valid email address');
       return false;
     }
+
     if (formData.password.length < 5) {
       toast.error('Password must be at least 5 characters');
       return false;
     }
+
     return true;
   };
 
@@ -103,9 +110,11 @@ const Login = () => {
     if (!validateForm()) return;
 
     try {
-       
       const { email, password } = formData;
+      console.log("Attempting login with:", { email });
+      
       const result = await dispatch(loginUser({ email, password })).unwrap();
+      console.log("Login successful:", result);
       
       if (formData.rememberMe) {
         localStorage.setItem('rememberedEmail', email);
@@ -114,9 +123,14 @@ const Login = () => {
       }
 
       toast.success('Login successful!');
-      redirectBasedOnRole(result.role);
       
+      // Add a small delay before redirect to ensure state updates and toast is visible
+      setTimeout(() => {
+        redirectBasedOnRole(result.role);
+      }, 500);
+
     } catch (err) {
+      console.error("Login failed:", err);
       setLoginAttempts(prev => {
         const newAttempts = prev + 1;
         if (newAttempts >= MAX_LOGIN_ATTEMPTS) {
@@ -126,11 +140,7 @@ const Login = () => {
         return newAttempts;
       });
 
-      toast.error(
-        err?.response?.data?.message || 
-        err.message || 
-        'Login failed. Please try again.'
-      );
+      toast.error(err?.message || 'Login failed. Please try again.');
     }
   };
 
@@ -144,9 +154,8 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
-        {/* Header Section */}
         <div className="flex flex-col items-center">
-          <h1 className="text-3xl font-bold text-blue-600">ChanRericr</h1>
+          <h1 className="text-3xl font-bold text-blue-600">HealthCare</h1>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>
@@ -161,14 +170,12 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Form Section */}
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          {/* Error Display */}
+        <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           {error && (
             <div className="rounded-md bg-red-50 p-4" role="alert">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                   </svg>
                 </div>
@@ -217,13 +224,10 @@ const Login = () => {
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   onClick={togglePasswordVisibility}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
                   tabIndex="-1"
                 >
-                  <span className="sr-only">
-                    {formData.showPassword ? 'Hide password' : 'Show password'}
-                  </span>
                   {formData.showPassword ? (
                     <svg className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -270,86 +274,28 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading || loginAttempts >= MAX_LOGIN_ATTEMPTS}
-              className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black ${
+              className={`group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md text-black ${
                 loading || loginAttempts >= MAX_LOGIN_ATTEMPTS
                   ? 'bg-blue-400 cursor-not-allowed'
                   : 'bg-blue-600 hover:bg-blue-700'
               } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors`}
-              aria-busy={loading}
             >
               {loading ? (
-                <>
-                  <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                    <svg 
-                      className="animate-spin h-5 w-5 text-white" 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      fill="none" 
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                  </span>
-                  <span className="pl-8">Signing in...</span>
-                </>
+                <div className="flex items-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Signing in...
+                </div>
               ) : (
                 'Sign in'
               )}
             </button>
           </div>
-
-          {/* Social Login Section */}
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  Or continue with
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              {/* Google Login */}
-              <button
-                type="button"
-                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                onClick={() => toast.info('Google login coming soon!')}
-              >
-                <span className="sr-only">Sign in with Google</span>
-                <svg className="w-5 h-5" viewBox="0 0 24 24">
-                  <path
-                    // src/pages/auth/login.js - Continuation
-
-                    fill="currentColor"
-                    d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"
-                  />
-                </svg>
-              </button>
-
-              {/* Facebook Login */}
-              <button
-                type="button"
-                className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                onClick={() => toast.info('Facebook login coming soon!')}
-              >
-                <span className="sr-only">Sign in with Facebook</span>
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
         </form>
 
-        {/* Rate Limit Warning */}
+        {/* Login Attempts Warning */}
         {loginAttempts > 0 && (
           <div className="mt-4">
             <p className="text-sm text-gray-600 text-center">
@@ -367,17 +313,11 @@ const Login = () => {
         <div className="mt-6">
           <p className="text-center text-xs text-gray-600">
             By signing in, you agree to our{' '}
-            <Link
-              href="/terms"
-              className="text-blue-600 hover:text-blue-500"
-            >
+            <Link href="/terms" className="text-blue-600 hover:text-blue-500">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link
-              href="/privacy"
-              className="text-blue-600 hover:text-blue-500"
-            >
+            <Link href="/privacy" className="text-blue-600 hover:text-blue-500">
               Privacy Policy
             </Link>
           </p>
@@ -386,24 +326,5 @@ const Login = () => {
     </div>
   );
 };
-
-// Add auth check for protected pages
-export async function getServerSideProps(context) {
-  // Check if user is already logged in
-  const { token } = context.req.cookies;
-
-  if (token) {
-    return {
-      redirect: {
-        destination: '/dashboard',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {}, // Will be passed to the page component as props
-  };
-}
 
 export default Login;
